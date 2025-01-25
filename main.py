@@ -6,11 +6,10 @@ from aiogram.filters import CommandStart
 
 import sys
 import os
-from dotenv import load_dotenv
 import asyncio
-load_dotenv()
 
-token = os.environ.get("TOKEN")
+
+token = os.getenv("TOKEN")
 dp = Dispatcher()
 
 @dp.message(CommandStart())
