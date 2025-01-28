@@ -18,10 +18,13 @@ def create_data():
 
 def fetch_data(song: str):
     with Session(engine) as session:
-        statement = select(Song).where(Song.name.like(f"%{song}%"))
-        results = session.exec(statement)
-        data = [i for i in results]
-        return data[0]
+        try:
+            statement = select(Song).where(Song.name.like(f"%{song}%"))
+            results = session.exec(statement)
+            data = [i for i in results]
+            return data[0]
+        finally:
+            session.close()
         # for result in results:
         #     return result.download_link
 
@@ -53,6 +56,7 @@ async def downloder(message: Message):
         song.download_link, filename=f"{song.name} - {song.artist}.mp3"
     )
     await Bot.send_audio(self= Bot(token=bot_token), chat_id=message.chat.id, audio=data, caption='🔥')
+    
 
 async def main():
     bot = Bot(token=bot_token, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
