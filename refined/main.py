@@ -44,7 +44,7 @@ dp =  Dispatcher()
 
 @dp.message(CommandStart())
 async def welcome(message: Message):
-    await message.answer(f"which song e searching for today, {html.bold(message.from_user.full_name)}")
+    await message.answer(f"which song are searching for today, {html.bold(message.from_user.full_name)}")
 
 @dp.message()
 async def downloder(message: Message):
