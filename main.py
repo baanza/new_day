@@ -32,13 +32,12 @@ from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.types import Message, URLInputFile
 
-from dotenv import load_dotenv
 import os
 import asyncio
 
-load_dotenv()
 
-bot_token = os.environ.get("TOKEN")
+
+bot_token = os.getenv("TOKEN")
 
 dp =  Dispatcher()
 
