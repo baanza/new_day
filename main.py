@@ -38,6 +38,7 @@ import asyncio
 
 
 bot_token = os.getenv("TOKEN")
+print(bot_token)
 
 dp =  Dispatcher()
 
